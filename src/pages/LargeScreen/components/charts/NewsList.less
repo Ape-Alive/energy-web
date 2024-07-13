@@ -1,0 +1,73 @@
+.RollingWrap {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+
+  .Title {
+    position: absolute;
+    top: 16px;
+    font-size: 16px;
+    color: #ccc;
+    width: 100%;
+    text-align: center;
+  }
+
+  .RollingNews {
+    position: relative;
+    top: 50px;
+    color: #00ddff;
+    flex-grow: 1;
+    height: 359px;
+    width: 100%;
+    overflow: hidden;
+
+    ul {
+      position: absolute;
+      padding: 0 10px;
+      top: 0;
+      left: 0;
+
+      li {
+        padding: 0;
+      }
+
+      .RollingNewsItem {
+        width: 370px;
+        font-size: 16px;
+        line-height: 24px;
+        height: 72px;
+        padding: 8px;
+        border-bottom: 1px solid #ccc9;
+        position: relative;;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        .SpecialText1 {
+          width: 50%;
+          text-align: left;
+          color: #ccc;
+          position: absolute;
+          left: 4px;
+          bottom: 4px;
+        }
+
+        .SpecialText2 {
+          width: 50%;
+          text-align: right;
+          color: #ccc;
+          position: absolute;
+          right: 4px;
+          bottom: 4px;
+        }
+      }
+    }
+
+    .anim {
+      transition: all 0.5s;
+      margin-top: -72px;
+    }
+  }
+
+}
+

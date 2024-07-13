@@ -1,0 +1,228 @@
+@import '~antd/es/style/themes/default.less';
+
+
+@font-face {
+  font-family: 'yousheziti';
+  /* 给字体指定一个名称 */
+  src: url('/yousheziti.ttf') format('truetype');
+  /* 指定字体文件的路径和格式 */
+}
+
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+.colorWeak {
+  filter: invert(80%);
+}
+
+.ant-layout {
+  min-height: 100vh;
+}
+
+.ant-pro-sider.ant-layout-sider.ant-pro-sider-fixed {
+  left: unset;
+}
+
+canvas {
+  display: block;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+@media (max-width: @screen-xs) {
+  .ant-table {
+    width: 100%;
+    overflow-x: auto;
+
+    &-thead>tr,
+    &-tbody>tr {
+
+      >th,
+      >td {
+        white-space: pre;
+
+        >span {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+// Compatible with IE11
+@media screen and(-ms-high-contrast: active),
+(-ms-high-contrast: none) {
+  body .ant-design-pro>.ant-layout {
+    min-height: 100vh;
+  }
+}
+
+#login .ant-layout-footer {
+  background: #f6f9fd !important;
+}
+
+// Compatible with IE11
+@media screen and(-ms-high-contrast: active),
+(-ms-high-contrast: none) {
+  body .ant-design-pro>.ant-layout {
+    min-height: 100vh;
+  }
+}
+
+.ant-pro-global-header-logo a h1 {
+  font-size: 24px !important;
+}
+
+#readonly .ant-pro-form-group-container {
+  width: 100% !important;
+}
+
+#readonly .ant-pro-form-group-container>div.ant-space-item {
+  width: 100% !important;
+}
+
+#readonly .ant-checkbox-group {
+  padding-top: 5px !important;
+}
+
+#statisticalAnalysis .ant-col .ant-form-item-control {
+  max-width: 100% !important
+}
+
+#overview .ant-pro-card-tabs .ant-tabs-top>.ant-tabs-nav .ant-tabs-nav-list {
+  width: 100%;
+}
+
+#overview .ant-tabs-tab {
+  flex: 1 !important;
+}
+
+div.ant-typography,
+.ant-typography p {
+  margin-bottom: 0 !important;
+}
+
+#overview .ant-tabs>.ant-tabs-nav .ant-tabs-nav-operations-hidden,
+.ant-tabs>div>.ant-tabs-nav .ant-tabs-nav-operations-hidden {
+  display: none !important;
+}
+
+#overview .ant-tabs-nav-operations {
+  display: none !important;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f6f6f6;
+}
+
+::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-track {
+  border: 0;
+}
+
+#statisticalAnalysis .ant-form-item-control-input {
+  width: 100%;
+}
+
+.ant-form-item-label>label.ant-form-item-required:not(.ant-form-item-required-mark-optional)::before {
+  line-height: 0 !important;
+}
+
+// .ant-form > div:not(.ant-pro-form-light-filter) .pro-field-md{
+// 	width:100% !important;
+// }
+.actionValuePicker .ant-picker {
+  width: 100% !important;
+}
+
+.reducePrice .ant-form-item-control-input-content {
+  color: red;
+}
+
+//
+.ant-pro-global-footer {
+  display: none;
+}
+
+.table-icon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  margin: 0 5px;
+  color: #434343;
+  font-size: 18px;
+}
+
+.table-icon1 {
+  width: 20px;
+  height: 20px;
+  cursor: not-allowed !important;
+  margin: 0 5px;
+  color: #c2c2c2;
+  font-size: 18px;
+}
+
+.table-opera-body {
+  display: flex;
+  align-items: center;
+}
+
+.ant-pro-global-header-layout-mix,
+.ant-menu.ant-menu-dark {
+  background-color: #202c54 !important
+}
+
+
+
+
+
+
+.radio-body .ant-radio-button-wrapper-checked {
+  border-color: #fff !important;
+  border-right-color: #2281d4 !important;
+}
+
+
+
+.ant-pro-global-header-logo a img {
+  height: 48px !important;
+}
+
+.ant-table-row-level-1 {
+  .ant-pro-field-index-column-border {
+    margin-left: 15px;
+  }
+}
+
+
+.ant-radio-group {
+  z-index: 99999;
+}
+
+.largeScreenValue {
+  font-size: 1vw;
+  font-weight: 800;
+}

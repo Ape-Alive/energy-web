@@ -1,0 +1,66 @@
+@import '~antd/lib/style/themes/default.less';
+@import '../default.less';
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	overflow: auto;
+	background:@black3;
+}
+
+
+.registerContent {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 100vh;
+}
+.signupBase{
+	margin: auto auto 24px;
+}
+.button{
+	display: 'flex';
+	align-items: center;
+	justify-content: center;
+
+}
+.block{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.title {
+	font-size: @largeSize;
+	color: @black1;
+	font-weight: 500;
+	margin-bottom: 24px;
+}
+.goBack{
+	color:  @black2;
+	cursor: pointer;
+	// width: 100%;
+	// display: flex;
+	// justify-content: center;
+	// align-items: center;
+}
+@media (min-width: @screen-md-min) {
+	.container {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 100vh;
+		background: @black3;
+	}
+	
+	.registerContent{
+		margin-top: 30px;
+		padding: 30px 0 30px 0;
+		border-radius: 5px;
+		overflow: hidden;
+		height: 550px;
+	}
+}
