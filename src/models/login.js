@@ -6,7 +6,7 @@ import {
   setUserName,
   setTimeZone,
 } from '@/utils/authority'
-import { reloadAuthorized } from '@/utils/Authorized'
+// import { reloadAuthorized } from '@/utils/Authorized'
 import { routerRedux } from 'dva/router'
 
 export default {
@@ -18,16 +18,16 @@ export default {
 
   effects: {
     *login({ payload }, { call, put }) {
-      const response = yield call(apiBase, { ...payload, apiMethod: 'login' })
-
+      const response = yield call(apiBase, { ...payload })
+      // console.log('response',response)
       // Login successfully
-      if (response.data && response.data.token) {
-        reloadAuthorized()
+      if (response && response.token) {
+        // reloadAuthorized()
         yield put({
           type: 'changeLoginStatus',
-          payload: response.data
+          payload: response
         })
-        localStorage.setItem('userId', response.data.userId)
+        // localStorage.setItem('userId', response.data.userId)
       }
 
       return response
@@ -61,7 +61,7 @@ export default {
     changeLoginStatus(state, { payload }) {
 
       setToken(payload.token || '')
-      setTokenType(payload.token_type || 'bearer')
+      // setTokenType(payload.token_type || 'bearer')
       return {
         ...state,
         ...payload

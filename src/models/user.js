@@ -20,7 +20,7 @@ import {
 } from '@/services/user'
 import { setAuthority, setUserName, setTimeZone } from '@/utils/authority'
 
-import { apiBase } from '@/services/api'
+import { apiUserInfo } from '@/services/api'
 
 export default {
 	namespace: 'user',
@@ -60,14 +60,16 @@ export default {
 				payload: response
 			})
 		},
+    //获取当前用户信息
 		*fetchCurrent({ payload }, { call, put }) {
-			const response = yield call(apiBase, { ...payload, apiMethod: 'getUserInfo' })
+			const response = yield call(apiUserInfo, { ...payload })
+      console.log('response1',response)
 			if (!response) {
 				return response
 			}
 			yield put({
 				type: 'changeLoginStatus',
-				payload: response.data
+				payload: response
 			})
 
 			return response

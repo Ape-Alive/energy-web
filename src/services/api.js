@@ -143,14 +143,24 @@ export async function logout(params) {
 //
 
 export async function apiBase(params) {
-  const token = getToken()
-  const utc_offsets = localStorage.getItem('utc_offsets')
-  const userId = localStorage.getItem('userId')
+  // const token = getToken()
+  // const utc_offsets = localStorage.getItem('utc_offsets')
+  // const userId = localStorage.getItem('userId')
   const language = localStorage.getItem('language') || 'en'
-  return request('/api/apiBase.php', {
+  // const 
+  return request('/v2/api/auth/login', {
     method: 'POST',
     body: params,
-    headers: { Token: token, Userid: userId, 'Accept-Language': language, 'Utc-Offsets': utc_offsets },
+    headers: { authorization:'', 'Accept-Language': language },
+  })
+}
+
+export async function apiUserInfo(params){
+  const language = localStorage.getItem('language') || 'en'
+  const token = getToken()
+  return request('/v2/api/auth/user', {
+    method: 'GET',
+    headers: { authorization:'Bearer'+' '+ token, 'Accept-Language': language },
   })
 }
 

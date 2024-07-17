@@ -1,14 +1,18 @@
 import Footer from '@/components/Footer'
 import RightContent from '@/components/RightContent'
-import { apiBase } from '@/services/api'
+import { apiUserInfo } from '@/services/api'
 import { PageLoading } from '@ant-design/pro-layout'
 import { history } from 'umi'
-import { version } from '../config/version'
-import { menuTree } from './services/account'
+// import { version } from '../config/version'
+// import { menuTree } from './services/account'
 const isDev = process.env.NODE_ENV === 'development'
+import {
+  getToken
+} from '@/utils/authority'
+
 const loginPath = '/user/login'
-const registerPath = '/user/Register'
-const forgetPasswordPath = '/user/ForgetPassword'
+// const registerPath = '/user/Register'
+// const forgetPasswordPath = '/user/ForgetPassword'
 import { useTranslation } from 'react-i18next'
 import zh from '@/i18n/zh.json'
 import en from '@/i18n/en.json'
@@ -23,29 +27,27 @@ export const initialStateConfig = {
  * */
 
 export async function getInitialState() {
+  //获取用户信息
   const fetchUserInfo = async () => {
     try {
-      const msg = await apiBase({
-        userId: localStorage.getItem('userId'),
-        apiMethod: 'getUserInfo'
-      })
+      const msg = await apiUserInfo()
       console.log(msg)
-      try {
-        //category=0代表超级管理员
-        if (
-          msg &&
-          msg.data &&
-          msg.data.role &&
-          msg.data.role.category &&
-          msg.data.role.category !== '0'
-        ) {
-          const roleInfo = await menuTree()
-          const roleList = roleInfo.data || []
-          return { ...msg.data, roleList }
-        }
-      } catch (error) {
-        history.push(loginPath)
-      }
+      // try {
+      //   //category=0代表超级管理员
+      //   if (
+      //     msg &&
+      //     msg.data &&
+      //     msg.data.role &&
+      //     msg.data.role.category &&
+      //     msg.data.role.category !== '0'
+      //   ) {
+      //     const roleInfo = await menuTree()
+      //     const roleList = roleInfo.data || []
+      //     return { ...msg.data, roleList }
+      //   }
+      // } catch (error) {
+      //   history.push(loginPath)
+      // }
       return msg.data
     } catch (error) {
       history.push(loginPath)
@@ -54,29 +56,36 @@ export async function getInitialState() {
     return undefined
   } // 如果是登录页面，不执行
 
-  const fetchMenu = async (roleId) => {
-    const { data = [] } = await apiBase({
-      apiMethod: 'getRoleMenuList',
-      roleId
-    })
+  // const fetchMenu = async (roleId) => {
+  //   const { data = [] } = await apiBase({
+  //     apiMethod: 'getRoleMenuList',
+  //     roleId
+  //   })
 
-    return data
-  }
-  if (
-    history.location.pathname !== loginPath &&
-    history.location.pathname !== registerPath &&
-    history.location.pathname !== forgetPasswordPath
-  ) {
-    const currentUser = await fetchUserInfo()
-
-    const menuList = await fetchMenu(currentUser.roleId)
-
-    return {
-      fetchUserInfo,
-      menuList,
-      currentUser,
-      settings: {}
+  //   return data
+  // }
+  // if (
+  //   history.location.pathname !== loginPath &&
+  //   history.location.pathname !== registerPath &&
+  //   history.location.pathname !== forgetPasswordPath
+  // ) 
+  if(getToken()){
+    try {
+      const currentUser = await fetchUserInfo()
+      return {
+        fetchUserInfo,
+        // menuList,
+        currentUser,
+        settings: {}
+      }
+    } catch (error) {
+      console.error(error)
     }
+   
+
+    // const menuList = await fetchMenu(currentUser.roleId)
+
+    
   }
 
   return {

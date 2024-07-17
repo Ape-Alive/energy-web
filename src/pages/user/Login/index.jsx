@@ -53,32 +53,32 @@ const Login = (props) => {
         ...values
       }
     }).then((res) => {
-      if (res && res.code === '000301') {
-        message.error(res.msg)
-        return
-      }
-      if (res && res.code === '000000') {
+      // if (res && res.code === '000301') {
+      //   message.error(res.msg)
+      //   return
+      // }
+      // if (res && res.code === '000000') {
         dispatch({
           type: 'user/fetchCurrent',
           payload: {
-            userId: res.data.userId
+            token: res.token
           }
         }).then(async (userInfo) => {
-          if (userInfo && userInfo.code === '000000') {
-            const currentUser = (userInfo && userInfo.data) || null
-            const { data = [] } = await apiBase({
-              apiMethod: 'getRoleMenuList',
-              roleId: userInfo.data.roleId
-            })
+          if (userInfo ) {
+            const currentUser = userInfo || null
+            // const { data = [] } = await apiBase({
+            //   apiMethod: 'getRoleMenuList',
+            //   roleId: userInfo.data.roleId
+            // })
             setInitialState((s) => ({
               ...s,
               currentUser: currentUser,
-              menuList: data
+              // menuList: data
             }))
             window.location.replace('/data-grid')
           }
         })
-      }
+      // }
     })
   }
 
