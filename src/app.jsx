@@ -11,8 +11,8 @@ import {
 } from '@/utils/authority'
 
 const loginPath = '/user/login'
-// const registerPath = '/user/Register'
-// const forgetPasswordPath = '/user/ForgetPassword'
+const registerPath = '/user/Register'
+const forgetPasswordPath = '/user/ForgetPassword'
 import { useTranslation } from 'react-i18next'
 import zh from '@/i18n/zh.json'
 import en from '@/i18n/en.json'
@@ -31,7 +31,7 @@ export async function getInitialState() {
   const fetchUserInfo = async () => {
     try {
       const msg = await apiUserInfo()
-      console.log(msg)
+    
       // try {
       //   //category=0代表超级管理员
       //   if (
@@ -48,7 +48,7 @@ export async function getInitialState() {
       // } catch (error) {
       //   history.push(loginPath)
       // }
-      return msg.data
+      return msg
     } catch (error) {
       history.push(loginPath)
     }
@@ -72,6 +72,7 @@ export async function getInitialState() {
   if(getToken()){
     try {
       const currentUser = await fetchUserInfo()
+      console.log('pppp',currentUser);
       return {
         fetchUserInfo,
         // menuList,
@@ -105,7 +106,6 @@ export const layout = ({ initialState }) => {
     footerRender: () => <Footer />,
     onPageChange: () => {
       const { location } = history // 如果没有登录，重定向到 login
-
       if (
         !initialState?.currentUser &&
         location.pathname !== loginPath &&

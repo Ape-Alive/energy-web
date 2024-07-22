@@ -64,15 +64,17 @@ const Login = (props) => {
             token: res.token
           }
         }).then(async (userInfo) => {
+      console.log('login',userInfo);
+      
           if (userInfo ) {
-            const currentUser = userInfo || null
+            // const currentUser = userInfo || null
             // const { data = [] } = await apiBase({
             //   apiMethod: 'getRoleMenuList',
             //   roleId: userInfo.data.roleId
             // })
             setInitialState((s) => ({
               ...s,
-              currentUser: currentUser,
+              currentUser:userInfo||null,
               // menuList: data
             }))
             window.location.replace('/data-grid')
